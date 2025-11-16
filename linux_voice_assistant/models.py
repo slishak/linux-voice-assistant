@@ -78,6 +78,9 @@ class ServerState:
     refractory_seconds: float = 2.0
     openwakeword_threshold: float = 0.5
 
+    stt_start_command: str = None
+    stt_stop_command: str = None
+
     def save_preferences(self) -> None:
         """Save preferences as JSON."""
         _LOGGER.debug("Saving preferences: %s", self.preferences_path)
