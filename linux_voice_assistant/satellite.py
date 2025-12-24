@@ -272,6 +272,7 @@ class VoiceSatelliteProtocol(APIServer):
         self.duck()
         self._is_streaming_audio = True
         self.state.tts_player.play(self.state.wakeup_sound)
+        run_command(self.state.wakeup_command)
 
     def stop(self) -> None:
         self.state.active_wake_words.discard(self.state.stop_word.id)

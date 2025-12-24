@@ -111,6 +111,12 @@ async def main() -> None:
         help="Command to run when the user stops speaking",
     )
     parser.add_argument(
+        "--wakeup-command",
+        default=None,
+        type=str,
+        help="Command to run when the assistant wakes up",
+    )
+    parser.add_argument(
         "--debug", action="store_true", help="Print DEBUG messages to console"
     )
     args = parser.parse_args()
@@ -247,6 +253,7 @@ async def main() -> None:
         download_dir=args.download_dir,
         stt_start_command=args.stt_start_command,
         stt_stop_command=args.stt_stop_command,
+        wakeup_command=args.wakeup_command,
     )
 
     process_audio_thread = threading.Thread(
