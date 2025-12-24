@@ -26,4 +26,10 @@ def run_command(command: Optional[str]) -> None:
 
     _LOGGER.debug("Running %s", command)
 
-    subprocess.call(command, shell=True)
+    proc = subprocess.Popen(
+        [command],
+        stdin=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True,
+    )
+    proc.communicate()
