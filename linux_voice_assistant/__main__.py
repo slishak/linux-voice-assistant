@@ -97,12 +97,12 @@ async def main() -> None:
     )
     parser.add_argument(
         "--wakeup-sound",
-        default=str(_SOUNDS_DIR / "wake_word_triggered.flac"),
+        default=str(_SOUNDS_DIR / "silence.flac"),
         help="Directory and file name for wake sound (when you say the wake word)",
     )
     parser.add_argument(
         "--start-listening-sound",
-        default=str(_SOUNDS_DIR / "start_listening_sound.flac"),
+        default=str(_SOUNDS_DIR / "silence.flac"),
         help="Directory and file name and sound for start listening button (when you press button to talk)",
     )
     parser.add_argument(
