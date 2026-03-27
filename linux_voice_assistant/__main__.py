@@ -101,6 +101,11 @@ async def main() -> None:
         help="Directory and file name for wake sound (when you say the wake word)",
     )
     parser.add_argument(
+        "--no-wakeup-sound",
+        action="store_true",
+        help="Skip the wakeup sound and start the pipeline immediately (reduces latency)",
+    )
+    parser.add_argument(
         "--start-listening-sound",
         default=str(_SOUNDS_DIR / "silence.flac"),
         help="Directory and file name and sound for start listening button (when you press button to talk)",
@@ -375,7 +380,7 @@ async def main() -> None:
         stop_word=stop_model,
         music_player=MpvMediaPlayer(device=args.audio_output_device),
         tts_player=MpvMediaPlayer(device=args.audio_output_device),
-        wakeup_sound=args.wakeup_sound,
+        wakeup_sound="" if args.no_wakeup_sound else args.wakeup_sound,
         start_listening_sound=args.start_listening_sound,
         
         timer_finished_sound=args.timer_finished_sound,

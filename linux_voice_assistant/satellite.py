@@ -521,10 +521,13 @@ class VoiceSatelliteProtocol(APIServer):
         self._pipeline_active = True
         self._emit(LVAEvent.WAKE_WORD_DETECTED)
         self.duck()
-        self.state.tts_player.play(
-            self.state.wakeup_sound,
-            done_callback=lambda: self._on_wakeup_sound_finished(wake_word_phrase),
-        )
+        if self.state.wakeup_sound:
+            self.state.tts_player.play(
+                self.state.wakeup_sound,
+                done_callback=lambda: self._on_wakeup_sound_finished(wake_word_phrase),
+            )
+        else:
+            self._on_wakeup_sound_finished(wake_word_phrase)
 
     def _on_wakeup_sound_finished(self, wake_word_phrase: str) -> None:
         """Callback invoked when the wakeup chime finishes; begin STT streaming."""

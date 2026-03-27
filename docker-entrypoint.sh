@@ -60,7 +60,9 @@ if [ -n "${REFACTORY_SECONDS}" ]; then
   EXTRA_ARGS+=( "--refractory-seconds" "$REFACTORY_SECONDS" )
 fi
 
-if [ -n "${WAKEUP_SOUND}" ]; then
+if [ "$NO_WAKEUP_SOUND" = "1" ]; then
+  EXTRA_ARGS+=( "--no-wakeup-sound" )
+elif [ -n "${WAKEUP_SOUND}" ]; then
   EXTRA_ARGS+=( "--wakeup-sound" "$WAKEUP_SOUND" )
 fi
 
