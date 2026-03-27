@@ -102,7 +102,7 @@ async def main() -> None:
     )
     parser.add_argument(
         "--start-listening-sound",
-        default=str(_SOUNDS_DIR / "start_listening_sound.flac")
+        default=str(_SOUNDS_DIR / "start_listening_sound.flac"),
         help="Directory and file name and sound for start listening button (when you press button to talk)",
     )
     parser.add_argument(
