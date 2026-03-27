@@ -565,6 +565,7 @@ def process_audio(state: ServerState, mic, block_size: int):
                             for micro_input in micro_inputs:
                                 if wake_word.process_streaming(micro_input):
                                     activated = True
+                                    _LOGGER.debug("MicroWakeWord triggered")
                         elif isinstance(wake_word, OpenWakeWord):
                             for oww_input in oww_inputs:
                                 for prob in wake_word.process_streaming(oww_input):
