@@ -569,7 +569,10 @@ def process_audio(state: ServerState, mic, block_size: int):
                             for oww_input in oww_inputs:
                                 for prob in wake_word.process_streaming(oww_input):
                                     if prob > 0.5:
+                                        _LOGGER.debug("p={prob:.2f}, triggered")
                                         activated = True
+                                    else:
+                                        _LOGGER.debug("p={prob:.2f}, rejected")
 
                         if activated and not state.muted:
                             # Check refractory
